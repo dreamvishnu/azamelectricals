@@ -60,6 +60,81 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		});
 	}
 	
+	
+	$scope.get_all_product_unit = function(){
+		$scope.dataset = {};
+	
+		$scope.dataset.class = 'Payments';
+		$scope.dataset.method = 'getProductUnit';
+		$scope.dataset.params = $rootScope.userprofile;
+		$scope.dataset.params.project_id = $rootScope.ProjectId;
+		$scope.joblist = [];
+		$scope.showerror = false;
+		$rootScope.loader = true;
+		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+			console.log(responsedata);
+			//if(responsedata.data.status == 1){
+				$scope.ProductUnit = responsedata.data;
+			//}
+			$rootScope.loader = false;
+			
+		}, function errorCallback(response) {
+			$scope.showerror = true;
+			$rootScope.loader = false;
+			$scope.$apply();
+   
+		});
+	}
+	$scope.link_item = function(x){
+		$scope.LinkItem = x;
+	}
+	$scope.saveproduct_added = function(){
+		$scope.dataset = {};
+	
+		$scope.dataset.class = 'Payments';
+		$scope.dataset.method = 'saveProducts';
+		$scope.dataset.params = $rootScope.userprofile;
+		$scope.dataset.params.project_id = $rootScope.ProjectId;
+		$scope.dataset.params.items = $scope.listitem_added;
+		$scope.dataset.params.LinkItem = $scope.LinkItem;
+		$scope.joblist = [];
+		$scope.showerror = false;
+		$rootScope.loader = true;
+		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+			//console.log(responsedata);
+			//if(responsedata.data.status == 1){
+				//$scope.ProductUnit = responsedata.data;
+			//}
+			$('#clickmetoclose').click();
+			$scope.listitem_added ={};
+			$scope.get_project_item();
+			$rootScope.loader = false;
+			
+		}, function errorCallback(response) {
+			$scope.showerror = true;
+			$rootScope.loader = false;
+			$scope.$apply();
+   
+		});
+	}
+	
+	
+	$scope.linkproduct = {};
+	$scope.get_selected_item = function(){
+		console.log($scope.ProductUnit);
+		console.log($scope.linkproduct.product_id);
+		$scope.listitem_added = [];
+		angular.forEach($scope.ProductUnit.product, function (value, key) {
+			angular.forEach($scope.linkproduct.product_id, function (v, k) {
+				if(value.product_id == v){
+					$scope.listitem_added.push(value);
+				}
+			})
+        }); 
+		
+	}
+	
+	
 	$scope.get_project_task = function(){
 		$scope.dataset = {};
 	

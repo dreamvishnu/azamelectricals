@@ -14,10 +14,13 @@
 
             <div class="info-box-content">
               <span class="info-box-text" style="white-space: break-spaces;">{{x.title}}</span>
+              <span class="info-box-number">Item required: {{x.amount}}{{x.unit_name}}</span>
               <span class="info-box-number">Phase: {{x.payment_status}}</span>
+
               <div class="progress">
                 <div class="progress-bar" style="width: {{x.item_supplied}}%"></div>
               </div>
+              
             </div>
             <table class="table table-border">
 				<tr>
@@ -30,9 +33,7 @@
 					
 					<td>{{y.product_name}}</td>
 				
-					<td>
-						<input type="text" value="{{y.quantity}}" ng-model="y.quantity" style="width:100px;"> {{y.unit_name}}
-					</td>
+					<td><input type="text" value="{{y.quantity}}" ng-model="y.quantity" style="width:100px;" disabled> {{x.unit_name}}</td>
 				</tr>
 			</table>
           </div>
@@ -60,6 +61,7 @@
 			</table>
 		
 		</div>
+		
 		  <div ng-show="userprofile.roleid == 4">
 		  <a href="javascript:void(0)" ng-click="accept_request()" ng-show="reqest_list.data.project[0].recived_status == 'REQUEST MANAGER'" class="btn btn-primary"><i class="fab fa-telegram-plane"></i>Approve</a>
 		  <br />

@@ -1,4 +1,4 @@
-<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_project_item()">
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_project_item(); get_all_product_unit()">
 	<div  class="">
 		<div class="card card-primary card-outline">
 		  <div class="card-header">
@@ -22,10 +22,13 @@
             </div>
             <ul class="ItemList">
 				<li ng-repeat="y in x.products">
-					{{y.product_name}}
-					<span ng-show="y.recived_item > 0"><br /><span>Recived {{y.recived_item}} {{x.unit_name}}</span></span>
+					{{y.product_name}} <span style="color:black; font-size:10px;">{{y.tq}} {{y.unit_symbol}}</span>
+					<span ng-show="y.recived_item > 0"><br /><span>Recived {{y.recived_item}} {{y.unit_symbol}}</span></span>
 				</li>
 			</ul>
+			<a href="javascript:void(0)" ng-click="link_item(x)" data-toggle="modal" data-target="#myModal" class="btn btn-sm bg-red btn-verysmall">
+				<i class="fas fa-list"></i> Link Item
+			</a>
           </div>
 			
           </div>
@@ -37,7 +40,52 @@
           
 		 
         </div>
+		<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="clickmetoclose" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Link Item</h4>
+      </div>
+      <div class="modal-body">
+			<form>
+				<select ng-model="linkproduct.product_id"   ng-change="get_selected_item()" class="form-control" multiple >
+					<option ng-repeat="x in ProductUnit.product" value="{{x.product_id}}">{{x.product_name}}</option>
+				</select>
+				
+				<div >
+					<table class="table table-bordered">
+						<tr>
+							<th>Product Name</th>
+							<th>Quantity</th>
+							<th>Unit</th>
+						</tr>
+						<tr ng-repeat="y in listitem_added">
+							<td>{{y.product_name}}</td>
+							<td><input type="number" ng-model="y.q" style="width: 81px;"></td>
+							<td>
+								{{y.unit_name}}
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+			</form>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-default" ng-click="saveproduct_added()" >Add Products</button>
+      </div>
+    </div>
+
+  </div>
+</div>	
         </div>
+
+		
+
         </div>
 <style>
 ul.ItemList {
@@ -58,7 +106,7 @@ ul.ItemList span {
     font-weight: normal;
 }
 #myBtn {
-  display: block; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
   right: 30px; /* Place the button 30px from the right */
