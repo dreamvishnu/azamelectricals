@@ -1,0 +1,42 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_project_item()">
+	<div  class="col-md-12">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Project Item</h3>
+		  </div>
+		   <p class="breakspace"></p>
+			
+		  <p class="breakspace"></p>
+          <div class="col-md-3 col-sm-6 col-12" id="skill_list">
+            <div class="info-box" ng-repeat="x in skills" ng-click="select_skill($index,x.Id,x)" ng-class="{'selected_skill':x.status == true}">
+              <span class="info-box-icon bg-info" style="background-image:url('https://dev.giginjobs.com/dev/newapp/assets/skills/{{x.ImgBack}}')"></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">{{x.ShortName}}</span>
+                <span class="info-box-number">{{x.FullName}}</span>
+                
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+		</div>
+		<div class="col-md-3 col-sm-6 col-12" id="subskill" style="display:none;">
+            <ul class="sub_skill" ng-show="sub_skills.length > 0">
+				<li ng-repeat="y in sub_skills" ng-click="select_subskill($index,y)" ng-class="{'selected_subskill':y.status == true}">
+					{{y.Name}}
+				</li>
+			 </ul>
+			  
+          <div class="card-footer">
+			<div class="float-right">
+			  
+			  <a href="#!/seeker_expertise_level"  class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Next</a>
+			</div>
+			<a href="#!/seeker_profile_photo" class="btn btn-default"><i class="fas fa-back"></i> Back</a>
+		  </div>
+		</div>
+		
+          
+		 
+        </div>
+        </div>
+        </div>

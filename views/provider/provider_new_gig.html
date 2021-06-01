@@ -1,0 +1,361 @@
+<section class="content innerpage" ng-controller="ProviderCtrl"  data-ng-init="get_all_skills_postjob()">
+	<div class="card card-solid paddingzero">
+	   
+        <div class="card-body pb-0 paddingzero">
+			<div class="card-header">
+			<h3 class="card-title">Post Gig</h3>
+		</div>
+		<div class="row">
+          <div class="col-md-3">
+            <div class="card card-primary">
+              <div class="card-header" data-card-widget="collapse" id="industrytab"> 
+                <h3 class="card-title"><i class="fa fa-industry"></i> Select Industry</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" ><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: block;">
+                <div class="narrow text-center">
+                    <div class="skill_list"> 
+						<ul>
+							<li ng-repeat="x in skills" ng-click="select_skill(x)" ng-class="{'selected_skill':x.Id == postjob.skill.Id}">
+								<div class="image_section" style="background-image:url('{{x.ImgBack}}')">
+									
+								</div>
+								<div class="content_section">
+									<h3>{{x.ShortName}}</h3>
+									<p>{{x.FullName}}</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+                  </div>
+                  
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3">
+            <div class="card card-primary collapsed-card">
+              <div class="card-header"  data-card-widget="collapse" id="gigtypespage">
+                <h3 class="card-title"><i class="fa fa-building"></i> Gig Type</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool"><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: none;">
+                <div class="narrow text-center">
+                     <ul class="sub_skill">
+						<li ng-repeat="y in sub_skills" ng-click="select_subskill(y)" ng-class="{'selected_subskill':y.Id == postjob.sub_skill.Id}">
+							{{y.Name}}
+						</li>
+					 </ul>
+					 
+					 <a href="javascript:void(0)" ng-click="add_new_gig_type()"><i class="fa fa-plus"></i> Add Gig Type</a>
+					 <div ng-show="new_gigtype == true;" class="new_gigtype">
+						<input type="text" value="" class="form-control" ng-model="postjob.gigtype_new">
+					 </div>
+                  </div>
+                  
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+		  
+		  
+		  <div class="col-md-3">
+            <div class="card card-primary collapsed-card">
+              <div class="card-header"  data-card-widget="collapse" id="gigdetailsection">
+                <h3 class="card-title"><i class="fa fa-briefcase"></i> Gig Description</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool"><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: none;">
+                 <div class="narrow " style="width: 87%;    margin: 0px auto;">
+                     
+						  <div class="form-group">
+							<label for="email"><strong>Name of Gig</strong>:</label>
+							<input type="text" class="form-control" ng-model="postjob.jobtitle" id="email" required>
+							<strong>Here are some good examples:</strong>
+								<ol>
+									<li>Need a web developer for my E-Commerce website</li>
+									<li>Need an animator for my short film</li>
+									<li>Need a graphics designer for my advertisement</li>
+								</ol>
+						  </div>
+						  <div class="form-group">
+							<label for="pwd"><strong>Description</strong>:</label>
+							<textarea type="password" class="form-control" ng-model="postjob.jobdescription"  id="pwd" required></textarea>
+							
+							<strong>Here are some must include topics:</strong>
+
+							<ol>
+								<li>What the your requirement</li>
+								<li>Type of expert you need</li>
+								<li>Other important things about the project or team</li>
+							</ol>
+						  </div>
+						  <hr />
+						  <h3 style="    font-size: 18px;    margin-bottom: 15px;">Gig Location</h3>
+						  <div class="form-group">
+							<label for="email"><strong>City</strong>:</label>
+							<input type="text" class="form-control" ng-model="postjob.job_city" value="<?php echo $cprofile->City; ?>" required>
+							
+						  </div>
+						  <div class="form-group">
+							<label for="email"><strong>State</strong>:</label>
+							<input type="text" class="form-control" ng-model="postjob.job_state"  value="<?php echo $cprofile->State; ?>" required>
+							
+						  </div>
+						  <div class="form-group">
+							<label for="email"><strong>Country</strong>:</label>
+							<input type="text" class="form-control" ng-model="postjob.job_country" value="<?php echo $cprofile->Country; ?>"  required>
+							
+						  </div>
+						</form>
+                  </div>
+                  <p class="text-center">
+                     
+                     <a href="javascript:return void(0)"  ng-click="gonext_jobparameter()" class="btn btn-primary  btn-outline-rounded "> Next <span style="margin-left:10px;" class="fa fa-arrow-right"></span></a>
+                  </p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+		  
+		  
+		  <div class="col-md-3">
+            <div class="card card-primary collapsed-card">
+              <div class="card-header"  data-card-widget="collapse" id="jobparameter">
+                <h3 class="card-title"><i class="fa fa-info-circle"></i> Gig Details</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" ><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: none;">
+                <div class="narrow text-center">
+                     <div class="prosection projecttype">
+						<h6>Select Gig Type</h6>
+						<ul>
+							<li ng-repeat="x in jobtype" ng-click="select_jobtype(x)" ng-class="{'selected':x.Id == postjob.jobtype.Id}">
+								<h3>{{x.JobType}}</h3>
+								<p>{{x.Descr}}</p>
+							</li>
+						</ul>
+					 </div>
+					 <div class="prosection payment_type">
+						<h6>Payment Method</h6>
+						<ul>
+							<li ng-repeat="x in payment_type" ng-click="select_payment_type(x)" ng-class="{'selected':x.id == postjob.payment_type.id}">
+								<h3>{{x.title}}</h3>
+								<p>{{x.description}}</p>
+							</li>
+						</ul>
+					 </div>
+					 <div class="prosection level">
+						<h6>Required Skill Level</h6>
+						<ul>
+							<li ng-repeat="x in level" ng-click="select_joblevel(x)" ng-class="{'selected':x.id == postjob.joblevel.id}">
+								<p>{{x.title}}</p>
+								
+							</li>
+						</ul>
+					 </div>
+					 <div class="prosection timeperiod">
+						<h6>Time Period of Gig</h6>
+						<ul>
+							<li ng-repeat="x in timeperiod" ng-click="select_timeperiod(x)" ng-class="{'selected':x.id == postjob.timeperiod.id}">
+								<p>{{x.title}}</p>
+								
+							</li>
+						</ul>
+					 </div>
+					  <div class="prosection timeperiod">
+						<h6>Working time of hired user</h6>
+						<ul>
+							<li ng-repeat="x in worktime" ng-click="select_worktime(x)" ng-class="{'selected':x.id == postjob.worktime.id}">
+								<p>{{x.title}}</p>
+								
+							</li>
+						</ul>
+					 </div>
+					 <div class="prosection timeperiod">
+						<h6>Working Places</h6>
+						<ul>
+							<li ng-repeat="x in workplace" ng-click="select_workplace(x)" ng-class="{'selected':x.id == postjob.workplace.id}">
+								<p>{{x.title}}</p>
+								
+							</li>
+						</ul>
+					 </div>
+                  </div>
+                  <p class="text-center">
+                    
+                     <a href="javascript:return void(0)"  ng-click="gonext_jobpost_screeningtab()" class="btn btn-primary  btn-outline-rounded "> Next <span style="margin-left:10px;" class="fa fa-arrow-right"></span></a>
+                  </p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+		  
+		  
+		  <div class="col-md-3">
+            <div class="card card-primary collapsed-card">
+              <div class="card-header"  data-card-widget="collapse" id="screeningtab">
+                <h3 class="card-title"><i class="fa fa-street-view"></i> Screeing Question</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" ><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: none;">
+                <div class="screening_section ">
+						
+						<div ng-show="postjob.screening_type == 'old'" class="selected_screening">
+							<h4>Choose From Existing Screening Templates</h4>
+							<ul class="list">
+								<li ng-repeat="x in screening_templates" ng-click="selelect_template(x.Id)"  ng-class="{'active':postjob.selected_template == x.Id}">>{{x.Title}}</li>
+								
+							</ul>
+							<br />
+							<br />
+							<button class="btn btn-primary" ng-click="add_new_template()">Add New Screening Templates</button>
+							<br />
+							<br />
+						</div>
+						<div ng-show="postjob.screening_type == 'new'" class="selected_screening">
+							<h4>Add new Screening Template</h4>
+							<p>Template Title</p>
+							<input type="text" value="" class="form-control" placeholder="Screeing Title" ng-model="postjob.screening_title">
+							<p>&nbsp;</p>
+							
+							<p>Screening Question</p>
+							<p>The questions MUST be self grading question where the applicant can rate themselves on a scale of 1 to 5</p>
+							<ul>
+								<li ng-repeat="q in postjob.screening_question track by $index">
+									<input type="text" class="form-control" placeholder="Screeing Question"  ng-model="q.title" >
+									<a href="javascript:void(0)"  ng-show="$index > 2" ng-click="remove_question($index)" style="position: absolute;
+    right: 0px;
+    margin-top: -29px; color:red; right: 63px;"><i class="fa fa-times"></i></a>
+	<p>&nbsp;</p>
+								</li>
+								
+								
+							</ul>
+						
+							<a href="javascript:void(0)" ng-show="postjob.screening_question.length < 10" class="btn btn-primary" ng-click="add_new_question()"><i class="fa fa-plus"></i> Add more Question</a>
+							<br />
+							
+							<br />
+							
+						</div> 
+						<p class="text-center">
+								 
+								 <a href="javascript:return void(0)"  ng-click="gonext_jobpost_review()" class="btn btn-primary  btn-outline-rounded "> Next <span style="margin-left:10px;" class="fa fa-arrow-right"></span></a>
+							  </p>
+					</div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+		  
+		  
+		  <div class="col-md-3">
+            <div class="card card-primary collapsed-card">
+              <div class="card-header"  data-card-widget="collapse" id="jobpost_review">
+                <h3 class="card-title"><i class="fa fa-registered "></i> Review</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" ><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: none;">
+                <h3 class="head text-center">Review your Gig details</h3>
+                  <p class="narrow text-center">
+                     <div class="prosection workplace">
+					
+						<h6>Industry : <span>{{postjob.skill.ShortName}}</span></h6>
+						
+					 </div>
+					 <div class="prosection workplace">
+						<h6>Gig : <span>{{postjob.sub_skill.Name}}</span></h6>
+						
+					 </div>
+					 <div class="prosection workplace">
+						<h6>Gig Title : <span>{{postjob.jobtitle}}</span></h6>
+						
+					 </div>
+					 <div class="prosection workplace">
+						<h6>Gig Description : <span>{{postjob.jobdescription}}</span></h6>
+						
+					 </div>
+					  <div class="prosection workplace">
+						<h6>Type of Gig : <span>{{postjob.jobtype.JobType}}</span></h6>
+						
+					 </div>
+					  <div class="prosection workplace">
+						<h6>Payment Method : <span>{{postjob.payment_type.title}}</span></h6>
+						
+					 </div>
+					  <div class="prosection workplace">
+						<h6>Required Skill Level : <span>{{postjob.joblevel.title}}</span></h6>
+						
+					 </div>
+					  <div class="prosection workplace">
+						<h6>Time Period of Gig : <span>{{postjob.timeperiod.title}}</span></h6>
+						
+					 </div>
+					  <div class="prosection workplace">
+						<h6>Working time of hired user : <span>{{postjob.worktime.title}}</span></h6>
+						
+					 </div>
+					  <div class="prosection workplace">
+						<h6>Working Places : <span>{{postjob.workplace.title}}</span></h6>
+						
+					 </div>
+					 
+                  </p>
+				   <p class="text-center">
+                    
+                     <a href="javascript:return void(0)"  ng-click="submitproject()" class="btn btn-primary  btn-outline-rounded "> Submit <span style="margin-left:10px;" class="fa fa-plane"></span></a>
+                  </p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+         
+          <!-- /.col -->
+        </div>
+	</div>
+</section>

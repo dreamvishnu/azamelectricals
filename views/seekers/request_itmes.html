@@ -1,0 +1,77 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_requested_item()">
+	<div  class="">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Requested Item</h3>
+		  </div>
+	      <div class="" id="skill_list">
+		  
+			
+			<div class="info-box bg-green" ng-repeat="x in reqest_list.data track by $index" ng-show='x.recived_status=="REQUEST MANAGER"'  ng-click="viewitems(x.id)">
+				
+
+				<div class="info-box-content">
+				  <span class="info-box-text">{{x.project_name}}</span>
+				  <div class="progress">
+					<div class="progress-bar" style="width: 40%"></div>
+				  </div>
+				  <span class="info-box-number">Requested Date: {{x.requested_date}}</span>
+				  <span class="info-box-number">Recived Date: {{x.recived_on}}</span>
+				  <span class="info-box-number">Requested By: {{x.staff_name}}</span>
+
+				  
+					<span class="">
+						
+					</span>
+					<div class="card-footer" style="background:transparent">
+					  <div class="text-right">
+					
+						<a href="javascript:void(0)"   class="btn btn-sm bg-red btn-verysmall">
+						  <i class="fas fa-list"></i> {{x.recived_status}}
+						</a>
+					  </div>
+					</div>
+				
+				</div>
+				
+				<!-- /.info-box-content -->
+			 </div>
+			 
+			 <div class="info-box bg-green" ng-repeat="x in reqest_list.data track by $index" ng-show='x.recived_status!="REQUEST MANAGER"'  ng-click="viewitems(x.id)">
+				
+
+				<div class="info-box-content">
+				  <span class="info-box-text">{{x.project_name}}</span>
+				  <div class="progress">
+					<div class="progress-bar" style="width: 40%"></div>
+				  </div>
+				  <span class="info-box-number">Requested Date: {{x.requested_date}}</span>
+				  <span class="info-box-number">Recived Date: {{x.recived_on}}</span>
+				  <span class="info-box-number">Requested By: {{x.staff_name}}</span>
+				  
+
+				  
+					<span class="">
+						
+					</span>
+					<div class="card-footer" style="background:transparent">
+					  <div class="text-right">
+					
+						<a href="javascript:void(0)"   class="btn btn-sm bg-red btn-verysmall">
+						  <i class="fas fa-list"></i> {{x.recived_status}}
+						</a>
+					  </div>
+					</div>
+				
+				</div>
+				
+				<!-- /.info-box-content -->
+			 </div>
+		</div>
+		
+		
+          
+		 
+        </div>
+        </div>
+        </div>

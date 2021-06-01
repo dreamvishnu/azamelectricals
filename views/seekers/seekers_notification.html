@@ -1,0 +1,33 @@
+<section class="content innerpage" ng-controller="SeekerCtrl"  data-ng-init="get_my_notification()">
+
+      <!-- Default box -->
+      <div class="card card-solid paddingzero">
+	  
+        <div class="card-body pb-0 paddingzero">
+		<div class="card-header">
+			<h3 class="card-title">Notifications</h3>
+		  </div>
+          <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-6 col-md-4  align-items-stretch">
+			<div ng-show="notifications.length == 0 && loader == false" class="nojoblist">
+				<h3>No Notification</h3>
+			</div>
+			  <span class="dropdown-item dropdown-header">{{notifications.length}} Notifications</span>
+              <div class="card bg-light" ng-repeat="x in notifications track by $index">
+                
+				  <div class="dropdown-divider"></div>
+				  <a href="javascript:void(0)" class="dropdown-item">
+					<i class="fas fa-bell mr-2"></i> <span ng-bind-html="x.message"><b>{{x.username}}</b> {{x.message}}</span>
+					<span class="float-right text-muted text-sm">{{x.datemessage}}</span>
+				  </a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+
+    </section>

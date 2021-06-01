@@ -1,0 +1,103 @@
+<div ng-controller="ProviderCtrl" class="innerpages" style="padding-bottom:0px;" data-ng-init="get_active_message();">
+	<div>
+		<div class="card card-primary card-outline">
+		
+		  <div class="card-header">
+			<h3 class="card-title">Messagin with {{activechat_d.Name}}</h3> <span id="action_menu_btn"><i class="fa fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+							
+								<ul>
+									<li ng-click="delete_conversation()"><i class="fa fa-users"></i> Clear Chat</li>
+								
+									<li ng-click="report_spam()"><i class="fa fa-plus"></i> Report Spam</li>
+									
+									<li ng-click="block_user(1)"><i class="fa fa-ban"></i> Block</li>
+								
+									
+									<!--<li ng-click="block_user(0)"><i class="fa fa-ban"></i> Unlock</li>-->
+									
+								</ul>
+							</div>
+		  </div>
+		  <!-- /.card-header -->
+		  <div class="">
+			<div class="card direct-chat direct-chat-primary">
+             
+              <!-- /.card-header -->
+              <div class="card-body">
+					<!-- Conversations are loaded here -->
+					<div class="direct-chat-messages mydivboxscroll " style=" height: 76vh;">
+					  <!-- Message. Default to the left -->
+					  <div class="direct-chat-msg">
+					 <div ng-repeat="x in messagelist" >
+						<div class="direct-chat-msg" ng-show="x.type == 'seeker'">
+							<div class="direct-chat-infos clearfix">
+							  
+							  <span class="direct-chat-timestamp float-right">{{x.datetime}}</span>
+							</div>
+							<!-- /.direct-chat-infos -->
+							<img class="direct-chat-img" src="{{activechat_d.image}}" alt="message user image">
+							<!-- /.direct-chat-img -->
+							<div class="direct-chat-text">
+							  &nbsp;{{x.messages}}
+							</div>
+							<!-- /.direct-chat-text -->
+						</div>
+						<div class="direct-chat-msg right" ng-show="x.type == 'provider'">
+							<div class="direct-chat-infos clearfix">
+							  
+							  <span class="direct-chat-timestamp float-right">{{activechat_d.datetime}}</span>
+							</div>
+							
+							<div class="direct-chat-text">
+							  &nbsp;{{x.messages}}
+							</div>
+							<!-- /.direct-chat-text -->
+						</div>
+					 
+							
+							
+						
+					</div>
+					</div>
+					<!-- /.direct-chat-pane -->
+				  </div>
+				  <!-- /.card-body -->
+				  <div class="card-footer chatboxfooter">
+					<form action="javascript:void(0)" ng-submit="submit_message()" method="post">
+					  <div class="input-group">
+						<input type="text" name="message" ng-model="message_text" placeholder="Type your message..." class="form-control">
+						<span class="input-group-append">
+						  <button type="button" class="btn btn-primary" ng-click="submit_message()">Send <i class="fa fa-location-arrow"></i></button>
+						</span>
+					  </div>
+					</form>
+				  </div>
+				  <!-- /.card-footer-->
+				</div>							  
+										
+											
+		   
+		   
+		  </div>
+		  <!-- /.card-body -->
+		 
+		  
+		  <!-- /.card-footer -->
+		</div>
+		<!-- /.card -->
+	 </div>
+ </div>
+ <script>
+ $('#action_menu_btn').click(function(){
+	$('.action_menu ul').toggle();
+ })
+ </script>
+ <style>
+ footer.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    display: none;
+}
+</style>

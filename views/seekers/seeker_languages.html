@@ -1,0 +1,105 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_languages()">
+	<div class="container">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Languages</h3>
+		  </div>
+		  <p class="breakspace"></p>
+			<p>What is your Language proficiency?</p>
+			 <p class="breakspace"></p>
+          <div class="col-md-3 col-sm-6 col-12">
+		 
+            <div class="info-box" ng-repeat="x in mylanguages">
+              <span class="info-box-icon bg-info"><i class="fas fa-language"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">{{x.Name}}</span>
+                <span class="info-box-number">{{x.Proficiency_Name}}</span>
+              </div>
+			 
+              
+            </div>
+			
+			 
+            <!-- /.info-box -->
+          </div>
+		  <p class="text-center add_button">
+			<a href="javascript:void(0)" data-toggle="modal" data-target="#educationbox"><i class="fas fa-plus"></i></a>
+		  </p>
+          <div class="card-footer">
+			<div class="float-right">
+			  
+			 <a href="#!/seeker_hour_rate"  class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Next</a>
+			</div>
+			<a href="#!/seeker_employement" class="btn btn-default"><i class="fas fa-back"></i> Back</a>
+		  </div>
+        </div>
+        </div>
+		
+		<div id="educationbox" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="closeeducationpoup">&times;</button>
+        <h4 class="modal-title">Add Language</h4>
+      </div>
+      
+  
+      <div class="modal-body " style="    text-align: left;">
+	  <form action="javascript:return false" ng-submit="submit_language()">
+         <div data-v-3c7f18d3="">
+            <div data-v-5fac4428="" data-v-3c7f18d3="" class="form-group">
+               <label data-v-5fac4428="" class="">Languages</label>  
+               <div data-v-50200d5d="" data-v-3c7f18d3="" class="up-autocomplete-wrapper" data-test="step-school" data-v-5fac4428="">
+                  <input data-v-50200d5d="" placeholder="Ex: English"  type="text"  ng-model="language.name"  autocomplete="none" class="form-control" required> <!----> <!---->
+				  <!--<angucomplete-alt id="ex1"    placeholder="Ex: English"    selected-object="EnglishName"    local-data="langulageslist"    search-fields="Name"    title-field="Name"    minlength="1"
+    inputclass="form-control form-control-small"    match-class="highlight" />-->
+               </div>
+               <!---->
+            </div>
+            <div data-v-5fac4428="" data-v-3c7f18d3="" class="form-group">
+               <label data-v-5fac4428="" class="">Select Proficiency </label>   
+               <div data-v-50200d5d="" data-v-3c7f18d3="" class="up-autocomplete-wrapper" data-test="step-area-of-study" data-v-5fac4428="">
+                  <div class="dropdown">
+			  <button type="button" class="btn btn-outline-secondary xSmallText xxSmallPadding dropdown-toggle xSmallText selProBtn" data-toggle="dropdown" aria-expanded="false">{{proficientytype}}</button>
+				<div class="dropdown-menu" style="width: 315px;">
+				  <a class="dropdown-item selPro" id="0" ng-click="selectproficiency(0,'Basic')" href="javascrip:void(0)">
+					  <p class="xSmallText xxSmallMarginB mediumBold" style="    margin-bottom: 0px;">Basic</p>
+					  <p class="xSmallText xxSmallMarginB">I write in this language decently</p>
+				  </a>
+				  <a class="dropdown-item selPro" id="1" href="javascrip:void(0)" ng-click="selectproficiency(1,'Conversational')">
+					  <p class="xSmallText xxSmallMarginB mediumBold" style="    margin-bottom: 0px;">Conversational</p>
+					  <p class="xSmallText xxSmallMarginB">I can write and speak this language well</p>
+				  </a>
+				  <a class="dropdown-item selPro" id="2" href="javascrip:void(0)" ng-click="selectproficiency(2,'Fluent')">
+					  <p class="xSmallText xxSmallMarginB mediumBold" style="    margin-bottom: 0px;">Fluent</p>
+					  <p class="xSmallText xxSmallMarginB">I can write and speak this language almost perfectly</p>
+				  </a>
+				  
+				  <a class="dropdown-item selPro" id="3" href="javascrip:void(0)" ng-click="selectproficiency(3,'Native or bilingual')">
+					  <p class="xSmallText xxSmallMarginB mediumBold" style="    margin-bottom: 0px;">Native or bilingual</p>
+					  <p class="xSmallText xxSmallMarginB">I can write and speak this language perfectly, including colloquialism</p>
+				  </a>
+				</div>
+		</div>
+               </div>
+               <!---->
+            </div>
+            <button class="btn btn-primary " ng-show="submitted == false" type="submit">Update</button>
+            <button class="btn btn-secondary disabled" ng-show="submitted == true" type="button">Update</button>
+         </div>
+      </div>
+      
+	  
+      
+	</form>
+    </div>
+
+  </div>
+</div>
+		
+		
+		
+        </div>

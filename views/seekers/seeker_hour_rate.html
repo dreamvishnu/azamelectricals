@@ -1,0 +1,94 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_requested_item_data()">
+	<div  class="col-md-12">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Requested/Link Item</h3>
+		  </div>
+	      <div class="col-md-3 col-sm-6 col-12" id="skill_list">
+		  
+			<p ng-repeat="x in reqest_list.data.project"><b>{{x.project_name}}</b></p>
+			
+			<div ng-repeat="x in reqest_list.data.item_requested">
+			<div class="info-box bg-yellow" >
+            
+
+            <div class="info-box-content">
+              <span class="info-box-text" style="white-space: break-spaces;">{{x.title}}</span>
+              <span class="info-box-number">Phase: {{x.payment_status}}</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: {{x.item_supplied}}%"></div>
+              </div>
+            </div>
+            <table class="table table-border">
+				<tr>
+					
+					<th>Item Name</th>
+				
+					<th>Quantity</th>
+				</tr>
+				<tr ng-repeat="y in x.products">
+					
+					<td>{{y.product_name}}</td>
+				
+					<td>
+						<input type="text" value="{{y.quantity}}" ng-model="y.quantity" style="width:100px;"> {{y.unit_name}}
+					</td>
+				</tr>
+			</table>
+          </div>
+			
+          </div>
+			
+			
+			<br />
+			<p>Item Send</p>
+			<table class="table table-border">
+				<tr>
+					<th>Product Name</th>
+					
+					<th>Quantity</th>
+					
+				</tr>
+				<tr ng-repeat="x in reqest_list.data.item_linked">
+					
+					
+					<td>{{x.product_name}}</td>
+					
+					<td>{{x.qty}} {{x.unit_name}}</td>
+					
+				</tr>
+			</table>
+		
+		</div>
+		  <div ng-show="userprofile.roleid == 4">
+		  <a href="javascript:void(0)" ng-click="accept_request()" ng-show="reqest_list.data.project[0].recived_status == 'REQUEST MANAGER'" class="btn btn-primary"><i class="fab fa-telegram-plane"></i>Approve</a>
+		  <br />
+		  <br />
+		  <a href="javascript:void(0)" ng-click="update_request(reqest_list)" ng-show="reqest_list.data.project[0].recived_status == 'REQUEST MANAGER'" class="btn btn-success"><i class="fab fa-telegram-plane"></i>Update</a>
+		  </div>
+		  
+		  <a href="javascript:void(0)" ng-click="accept_request()" ng-show="reqest_list.data.project[0].recived_status !== 'REQUEST MANAGER'" class="btn btn-primary"><i class="fab fa-telegram-plane"></i>Accept Item</a>
+          
+		 
+        </div>
+        </div>
+</div>
+<style>
+ul.ItemList {
+    width: 100%;
+    float: left;
+    display: block;
+    list-style: none;
+    padding: 0px;
+	color: #fff;
+    font-weight: bold;
+}
+.info-box.bg-yellow {
+    display: block;
+    overflow: hidden;
+}
+ul.ItemList span {
+    color: red;
+    font-weight: normal;
+}
+</style>

@@ -1,0 +1,117 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_project_item()">
+	<div  class="col-md-12">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Request Item</h3>
+		  </div>
+	      <div class="col-md-3 col-sm-6 col-12" id="skill_list">
+			<div ng-repeat="x in joblist.data">
+			<div class="info-box bg-yellow" >
+            
+
+            <div class="info-box-content">
+              <span class="info-box-text" style="white-space: break-spaces;">{{x.title}}</span>
+              <span class="info-box-number">Item required: {{x.amount}}{{x.unit_name}}</span>
+              <span class="info-box-number">Phase: {{x.payment_status}}</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: {{x.item_supplied}}%"></div>
+              </div>
+              
+            </div>
+            <table class="table table-border">
+				<tr>
+					<th></th>
+					<th>Item Name</th>
+				
+					<th>Quantity</th>
+				</tr>
+				<tr ng-repeat="y in x.products">
+					<td><input type="checkbox" ng-model="y.itemstatus"> </td>
+					<td>{{y.product_name}}</td>
+				
+					<td><input type="text" value="{{y.tq}}" ng-model="y.tq" style="width:100px;"> {{y.unit_symbol}}</td>
+				</tr>
+			</table>
+          </div>
+			
+          </div>
+			
+			By when
+			<input type="date" class="form-control" ng-model="request_date">
+			<br />
+			If you need any More Item then List Mention here<br />
+			<textarea class="form-control" ng-model="request_new_message"></textarea>
+			Any Message<br />
+			<textarea class="form-control" ng-model="request_message"></textarea>
+			<br />
+             <a href="javascript:void(0)" ng-click="submit_request()" class="btn btn-primary"><i class="fab fa-telegram-plane"></i>Send Request to Admin</a>
+
+		</div>
+		
+		<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+          
+		 
+        </div>
+        </div>
+        </div>
+		
+		<style>
+ul.ItemList {
+    width: 100%;
+    float: left;
+    display: block;
+    list-style: none;
+    padding: 0px;
+	color: #fff;
+    font-weight: bold;
+}
+.info-box.bg-yellow {
+    display: block;
+    overflow: hidden;
+}
+ul.ItemList span {
+    color: red;
+    font-weight: normal;
+}
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+</style>
+<script>
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>

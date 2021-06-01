@@ -1,0 +1,50 @@
+<div ng-controller="ProfileCtrl" class="loginpage " data-ng-init="checklogin()">
+
+	<div class="text-center logocontainer">
+		<img ng-src="dist/img/logo.png">
+	</div>
+	  <!-- /.login-logo -->
+	<br />
+	<br />
+  <div class="card">
+    <div class="card-body login-card-body">
+	<div class="alert-error" ng-show="loginerror.length > 3">{{loginerror}}</div>
+      <form action="javascript:void(0)" ng-submit="login()" method="post">
+        <div class="input-group mb-3">
+		  <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-phone"></span>
+            </div>
+          </div>
+          <input type="number" class="form-control" placeholder="Mobile" ng-model="loginvar.username" required>
+          
+        </div>
+        <div class="input-group mb-3">
+		  <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+          <input type="password" class="form-control" placeholder="Password" ng-model="loginvar.password" required>
+          
+        </div>
+        <div class="row">
+          
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+	  <br />
+	  <br />
+      <p class="mb-1">
+        <a href="#!/forgot_password">I forgot my password</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+	
+</div>

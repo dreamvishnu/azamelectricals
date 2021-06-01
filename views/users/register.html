@@ -1,0 +1,66 @@
+<div ng-controller="ProfileCtrl" class="registerpage ">
+
+	<div class="text-center logocontainer">
+		<img ng-src="dist/img/gigin-dark.svg">
+	</div>
+	  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+	<div class="alert-error" ng-show="loginerror.length > 3">{{loginerror}}</div>
+      <form action="javascript:void(0)" ng-submit="register()" method="post">
+	  <div class="input-group mb-3">
+			<div class="input-group-append">
+				<div class="input-group-text">
+				  <span class="fas fa-user"></span>
+				</div>
+			  </div>
+			<input type="text" ng-model="loginvar.Name" class="form-control" placeholder="Name" required>
+          
+        </div>
+        <div class="input-group mb-3">
+			<div class="input-group-append">
+				<div class="input-group-text">
+					<span class="fas fa-envelope"></span>
+				</div>
+			</div>
+          <input type="email" ng-model="loginvar.Email" class="form-control" placeholder="Email">
+          
+        </div>
+        <div class="input-group mb-3">
+			<div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+          <input type="password" ng-model="loginvar.Password" class="form-control" placeholder="Password">
+          
+        </div>
+        <div class="row">
+          
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <div class="social-auth-links text-center mb-3">
+		
+        <p>- OR -</p>
+        
+        <a href="javascript:void(0)" class="btn btn-block btn-danger" ng-click="googlelogin()">
+          <i class="fab fa-google-plus mr-2"></i> Sign up using Google+
+        </a>
+      </div>
+      <!-- /.social-auth-links -->
+
+     <p class="mb-0 text-center">
+        <a href="#!/login" class="text-center">Already have account? Login</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+	
+</div>

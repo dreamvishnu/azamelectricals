@@ -1,0 +1,109 @@
+<section class="content innerpage" ng-controller="ProviderCtrl"  data-ng-init="get_top_gigseekers(); get_my_gigs();">
+
+      <!-- Default box -->
+      <div class="card card-solid paddingzero">
+	   
+        <div class="card-body pb-0 paddingzero">
+			<div class="card-header">
+			<h3 class="card-title">Liked Gig Seekers</h3>
+		  </div>
+          <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-6 col-md-4 align-items-stretch">
+			<div ng-show="gigseekers.length == 0" class="nojoblist">
+				<h3>No Profile</h3>
+			</div>
+              <div class="card bg-light" ng-repeat="x in gigseekers track by $index" id="rejectseeker{{x.UserId}}">
+                <div class="card-header text-muted border-bottom-0">
+                  <h2>{{x.Name}}</h3>
+				  <p>For : {{x.JOBTITLE}}</p>
+                </div>
+                <div class="card-body pt-0 " >
+                  <div class="row">
+					<div class="col-5 text-center">
+                      <img ng-src="{{x.image}}" alt="" class="img-circle img-fluid">
+                    </div>
+                    <div class="col-7">
+                      <h4 class="lead"><b>{{x.Title}}</b></h4>
+					  <p class="text-muted text-sm"><b>Avability: </b> {{x.SeekerAvlStatus}}</p>
+					  <p class="text-muted text-sm"><b>Exp Level: </b> {{x.ExpLevelText}}</p>
+					  <p class="text-muted text-sm"><b>Avability Duration: </b> {{x.Availablility}}</p>
+                      
+                      
+                    </div>
+                    <div class="col-12">
+					<ul class="ml-4 mb-0 fa-ul text-muted">
+                        <p class="text-muted text-sm"> {{x.Descr}}</p>
+                    </ul>
+					</div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#rejectprofile" ng-click="setrejectprofileid(x.UserId)" class="btn btn-sm bg-teal btn-verysmall">
+                      <i class="fas fa-thumbs-down"></i>
+                    </a>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+	
+	<!-- Rejection -->
+<div id="rejectprofile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"  id="closerejectionpopup">&times;</button>
+        <h4 class="modal-title">Reject Profile</h4>
+      </div>
+      <div class="modal-body">
+        <p><a href="javascript:void(0)" ng-click="reject_seeker('Candidate is underqualified for the Gig')">Candidate is underqualified for the Gig</a></p>
+	   <p><a href="javascript:void(0)" ng-click="reject_seeker('Candidate is overqualified for the Gig')">Candidate is overqualified for the Gig</a></p>
+	   <p><a href="javascript:void(0)" ng-click="reject_seeker('Over my budget')">Over my budget</a></p>
+	   
+	   <p><a href="javascript:void(0)" ng-click="reject_seeker('Location Constraint')">Location Constraint </a></p>
+	   <p><a href="javascript:void(0)" ng-click="reject_seeker('Resume is not clear')">Resume is not clear</a></p>
+		<p><a href="javascript:void(0)" ng-click="reject_seeker('Past experience not good')">Past experience not good</a></p>
+	   <p><a href="javascript:void(0)" ng-click="reject_seeker('Found better profile')">Found better profile</a></p>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<!-- Rejection -->
+
+	<!-- SELECTION -->
+<div id="selectprofile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="closeselectionpopup">&times;</button>
+        <h4 class="modal-title">Select Profile for</h4>
+      </div>
+      <div class="modal-body">
+		
+        <p ng-repeat="x in joblist"><a href="javascript:void(0)" ng-click="save_gigseeker(x.Id)">{{x.Title}}</a></p>
+	   
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<!-- SELECTION -->			
+		
+	
+	
+    </section>

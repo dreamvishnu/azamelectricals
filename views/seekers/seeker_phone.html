@@ -1,0 +1,34 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_work_profile(); get_country();">
+	<div>
+		<div class="card card-primary card-outline">
+		<form action="javascript:void(0)" ng-submit="submit_phone()" method="post">
+		  <div class="card-header">
+			<h3 class="card-title">Phone Number</h3>
+		  </div>
+		  <!-- /.card-header -->
+		  <div class="card-body">
+			<div class="form-group">
+			   <label class="mobilenumber">Mobile Number</label>
+				<select ng-model="workprofile.C_CODE" class="form-control countrycode" required>
+					<option ng-repeat="x in codelist" value="{{x.CODE}}" >{{x.Name}} ({{x.CODE}})</option>
+				</select>
+				<input class="form-control mobilenumber" placeholder="" ng-model="workprofile.Mob" maxlength="10" minlength="10" required>
+			</div>
+			
+		   
+		   
+		  </div>
+		  <!-- /.card-body -->
+		  <div class="card-footer">
+			<div class="float-right">
+			  
+			  <button type="submit" class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Submit</button>
+			</div>
+			<a href="#!/seeker_location" class="btn btn-default"><i class="fas fa-back"></i> Back</a>
+		  </div>
+		  </form>
+		  <!-- /.card-footer -->
+		</div>
+		<!-- /.card -->
+	 </div>
+ </div>
