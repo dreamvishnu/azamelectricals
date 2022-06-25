@@ -216,8 +216,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 	
 
 	//Test Region 
-	$rootScope.baseurl_main = 'https://95.111.227.224/ProjectManagement/mobileapi/index.php';
-	$rootScope.baseurl = 'https://95.111.227.224/ProjectManagement/';
+	$rootScope.baseurl_main = 'https://azaam.talentsofindia.in/api/';
+	$rootScope.baseurl = 'https://azaam.talentsofindia.in/';
 	$rootScope.profileactive = 'NOLOGIN';
 	$rootScope.version = '1.0.1';
 	$rootScope.type = 'Android';

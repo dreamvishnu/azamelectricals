@@ -46,6 +46,7 @@
 			alert('code: '    + error.code    + '\n' +   'message: ' + error.message + '\n');
 		}
 		setInterval(function(){ 
+		    navigator.geolocation.getCurrentPosition(onSuccess_lat, onError_lat,{ enableHighAccuracy: true });
 			cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
 				if(enabled == true){
 					$('#gpsstatus1').show();
@@ -64,7 +65,7 @@
 				alert('Enable GPS TO PUNCH');
 			});  
 			
-			//navigator.geolocation.getCurrentPosition(onSuccess_lat, onError_lat,{ enableHighAccuracy: true }); 
+			 
 		}, 5000);
 	  </script>
 

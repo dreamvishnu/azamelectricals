@@ -14,19 +14,17 @@ app.controller('ProfileCtrl', function($rootScope, $scope, $http, $location) {
         $rootScope.loader = true;
         $scope.loginvar.type = $rootScope.type;
         $scope.loginvar.version = $rootScope.version;
-		$scope.dataset.class = 'Login';
-		$scope.dataset.method = 'getLoginResult';
 		$scope.dataset.data =  $scope.loginvar;
-        $http.post($rootScope.baseurl_main, $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 10000}).then(function(response) {
+        $http.post($rootScope.baseurl_main+'login.php', $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 10000}).then(function(response) {
 			console.log(response);
             $scope.trycount = 0;
 			$scope.loginerror = '';
 			$rootScope.loader = false;
-			if(response.data.status == 1){
+			if(response.data.status == 'success'){
 				
-				localStorage.setItem("userprofile", JSON.stringify(response.data));
+				localStorage.setItem("userprofile", JSON.stringify(response.data.user));
 				
-				$rootScope.userprofile = response.data;
+				$rootScope.userprofile = response.data.user;
 				console.log($rootScope.userprofile);
 				
 				$rootScope.loginuser = true;

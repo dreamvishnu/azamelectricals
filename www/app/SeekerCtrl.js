@@ -11,16 +11,15 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.get_job_feed = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'Projects';
-		$scope.dataset.method = 'getProjectsData';
+		
 		$scope.dataset.params = $rootScope.userprofile;
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'projects.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
-				$scope.joblist = responsedata.data;
+				$scope.joblist = responsedata.data.data;
 			//}
 			$rootScope.loader = false;
 			
@@ -38,14 +37,13 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.get_project_item = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'Payments';
-		$scope.dataset.method = 'getPaymentsData';
+		
 		$scope.dataset.params = $rootScope.userprofile;
 		$scope.dataset.params.project_id = $rootScope.ProjectId;
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'project_item.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.joblist = responsedata.data;
@@ -64,14 +62,13 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.get_all_product_unit = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'Payments';
-		$scope.dataset.method = 'getProductUnit';
+	
 		$scope.dataset.params = $rootScope.userprofile;
 		$scope.dataset.params.project_id = $rootScope.ProjectId;
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'getProductUnit.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.ProductUnit = responsedata.data;
@@ -91,8 +88,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.saveproduct_added = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'Payments';
-		$scope.dataset.method = 'saveProducts';
+		
 		$scope.dataset.params = $rootScope.userprofile;
 		$scope.dataset.params.project_id = $rootScope.ProjectId;
 		$scope.dataset.params.items = $scope.listitem_added;
@@ -100,7 +96,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'saveProducts.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			//console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				//$scope.ProductUnit = responsedata.data;
@@ -145,7 +141,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'getTaskBoardData.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.joblist = responsedata.data;
@@ -171,7 +167,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'getMyTask.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.joblist = responsedata.data;
@@ -189,14 +185,13 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.get_today_task = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'TaskBoard';
-		$scope.dataset.method = 'getTodayTask';
+		
 		$scope.dataset.params = $rootScope.userprofile;
 		$scope.dataset.params.project_id = $rootScope.ProjectId;
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'getTodayTask.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.joblist = responsedata.data;
@@ -225,7 +220,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.employlist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'getEmplyeeProject.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.employlist = responsedata.data;
@@ -251,7 +246,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.employlist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'AddTaskMobile.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			$location.path('/seeker_education');
 			$rootScope.loader = false;
@@ -268,14 +263,13 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.get_complted_task = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'TaskBoard';
-		$scope.dataset.method = 'CompletedTask';
+		
 		$scope.dataset.params = $rootScope.userprofile;
 		$scope.dataset.params.project_id = $rootScope.ProjectId;
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'CompletedTask.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
 			//if(responsedata.data.status == 1){
 				$scope.joblist = responsedata.data;
@@ -294,8 +288,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.dataset = {};
 		var r = confirm("Are you Sure!");
 		if(r == true){
-			$scope.dataset.class = 'TaskBoard';
-			$scope.dataset.method = 'PunchAttandance';
+			
 			$scope.dataset.params = $rootScope.userprofile;
 			$scope.dataset.params.type = type;
 			$scope.dataset.params.latid = localStorage.getItem('lat');
@@ -303,7 +296,7 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 			$scope.joblist = [];
 			$scope.showerror = false;
 			$rootScope.loader = true;
-			$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+			$http.post($rootScope.baseurl_main +'PunchAttandance.php', $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 				console.log(responsedata);
 				$scope.get_punch_data();
 				$rootScope.loader = false;
@@ -323,16 +316,15 @@ app.controller('SeekerCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.get_punch_data = function(){
 		$scope.dataset = {};
 	
-		$scope.dataset.class = 'TaskBoard';
-		$scope.dataset.method = 'GetAttandance';
+		
 		$scope.dataset.params = $rootScope.userprofile;
 		
 		$scope.joblist = [];
 		$scope.showerror = false;
 		$rootScope.loader = true;
-		$http.post($rootScope.baseurl_main , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
+		$http.post($rootScope.baseurl_main+'GetAttandance.php' , $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			console.log(responsedata);
-			if(responsedata.data.status == 1){
+			if(responsedata.data.status == 'success'){
 				$scope.punchin = 1;
 				cordova.plugins.foregroundService.start('AZAM ELECTRICAL', 'PUNCH IN');
 			}else{
