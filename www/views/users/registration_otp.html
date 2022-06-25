@@ -1,0 +1,42 @@
+<div ng-controller="ProfileCtrl" class="registerpage ">
+
+	<div class="text-center logocontainer">
+		<img ng-src="dist/img/gigin-dark.svg">
+	</div>
+	  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+	<div class="alert-error" ng-show="loginerror.length > 3">{{loginerror}}</div>
+      <form action="javascript:void(0)" ng-submit="register_otp()" method="post">
+	  
+        <div class="input-group mb-3">
+			<div class="input-group-append">
+				<div class="input-group-text">
+					<span class="fas fa-envelope"></span>
+				</div>
+			</div>
+          <input type="text" ng-model="loginvar.code" class="form-control" placeholder="Verification Code">
+          
+        </div>
+        
+        <div class="row">
+          
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Verify Account</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <!-- /.social-auth-links -->
+
+     <p class="mb-0 text-center">
+        <a href="#!/login" class="text-center">Already have account? Login</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+	
+</div>

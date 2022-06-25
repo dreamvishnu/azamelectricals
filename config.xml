@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="51" id="com.azam.electricals" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>AZAM ELECTRICAL</name>
+    <description>
+        AZAM ELECTRICAL  powered AI that cam help you learn and grow
+    </description>
+    <author email="info@azaam.com" href="#">
+        AZAM ELECTRICAL  Team
+    </author>
+    <content src="index.html" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
+    <access origin="*" />
+	<allow-navigation href="http://azamelectricals.com/*" />
+    <preference name="orientation" value="portrait" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="allowBackup" value="false" />
+    <preference name="fullBackupContent" value="false" />
+    <preference name="AndroidXEnabled" value="true" />
+    <allow-navigation href="*youtube*" />
+    <allow-navigation href="*ytimg*" />
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="ios-package" value="CDVSplashScreen" />
+    </feature>
+    <preference name="DisallowOverscroll" value="true" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
+    <plugin name="cordova-plugin-device" spec="^1.1.6" />
+    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
+</widget>

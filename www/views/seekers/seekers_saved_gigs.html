@@ -1,0 +1,48 @@
+<section class="content innerpage" ng-controller="SeekerCtrl"  data-ng-init="get_complted_task()">
+
+      <!-- Default box -->
+      <div class="card card-solid paddingzero">
+	  
+        <div class="card-body pb-0 paddingzero">
+		<div class="card-header">
+			<h3 class="card-title">Completed Task</h3>
+		  </div>
+          <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-6 col-md-4  align-items-stretch">
+			
+			
+			<div ng-show="joblist.length == 0 && loader == false" class="nojoblist">
+				<h3>No Task</h3>
+			</div>
+              <div class="info-box bg-red" ng-repeat="x in joblist track by $index"  ng-click="viewitems(x.id)">
+				
+
+				<div class="info-box-content">
+				  <span class="info-box-text">{{x.project_name}}</span>
+				  <span class="info-box-number">Requested Date: {{x.task_date}}</span>
+				  <span class="info-box-number">Complete By Date: {{x.task_time}}</span>
+				  
+
+				  <div class="progress">
+					<div class="progress-bar" style="width: 40%"></div>
+				  </div>
+					<span class="">
+						{{x.task_name}}
+					</span>
+					<br />
+					<p class="text-muted text-sm" style="background:yellow;     color: #000	 !important;
+    text-align: center;"> {{x.task_group_name}}</p>
+				</div>
+				
+				<!-- /.info-box-content -->
+			 </div>
+            </div>
+            
+          </div>
+        </div>
+      
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+
+    </section>

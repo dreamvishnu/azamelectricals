@@ -1,0 +1,46 @@
+<div ng-controller="ProviderCtrl" class="innerpages" data-ng-init="get_company_profile();">
+	<div>
+		<div class="card card-primary card-outline">
+			<form action="javascript:void(0)" ng-submit="company_info()">
+		  <div class="card-header">
+			<h3 class="card-title">Contact Info</h3>
+		  </div>
+		  <!-- /.card-header -->
+		  <div class="card-body">
+			<div class="form-group">
+			   <label>Company Name</label>
+			  <input class="form-control" placeholder="" ng-model="companyprofile.CompanyName" required>
+			</div>
+			<div class="form-group">
+			   <label>How many employees in company? *</label>
+				<select class="form-control required" ng-model="companyprofile.Emplyee_count" required>
+					<option value="< 10" selected="selected">&lt; 10</option>
+					<option value="10 - 50">10 - 50</option>
+					<option value="50 - 200">50 - 200</option>
+					<option value="200 - 500">200 - 500</option> 
+					<option value="500+">500+</option>
+					
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Small description about company. <sup>*</sup></label>
+				<textarea type="text" class="form-control required" ng-model="companyprofile.Descr" required=""></textarea>
+				
+			  </div> 
+		   
+		   
+		  </div>
+		  <!-- /.card-body -->
+		  <div class="card-footer">
+			<div class="float-right">
+			  
+			  <button type="submit" class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Next</button>
+			</div>
+			<button type="reset" class="btn btn-default"><i class="fas fa-back"></i> Back</button>
+		  </div>
+		  </form>
+		  <!-- /.card-footer -->
+		</div>
+		<!-- /.card -->
+	 </div>
+ </div>

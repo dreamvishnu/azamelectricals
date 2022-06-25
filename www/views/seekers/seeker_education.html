@@ -1,0 +1,58 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_project_task()">
+	<div>
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Project Task</h3>
+		  </div>
+		  <div ng-show="userprofile.roleid == 4">
+			<a href="javascript:void(0)"  ng-click="add_task()" class="btn btn-primary" >Add Task</a>
+			</div>
+			<div class="" ng-repeat="x in joblist">
+				<div class="info-box tail" >
+					<div class="info-box-content">
+						<span class="info-box-text">{{x.task_group_name}}</span>
+					</div>
+				</div>
+				<table class="table table-border">
+					<tr ng-repeat="y in x.TaskList">
+						<td style="background:#3CAEA3 !important">
+							<p class="tasktitle">{{y.task_name}}</p>
+							<p class="datecss"><b>Start on</b>: {{y.task_date}}</p>
+							<p class="datecss"><b>Complete by</b> : {{y.task_time}}</p>
+							<p class="text-right">
+							<a href="javascript:void(0)" ng-click="swith_task(y,joblist)" data-toggle="modal" data-target="#myModal" class="btn btn-sm bg-red btn-verysmall">
+							  <i class="fas fa-list"></i> Switch Task
+							</a>
+							</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+         
+        </div>
+        </div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Swith Task</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="tasklist">
+			<li ng-repeat="z in joblist"   data-dismiss="modal" ng-click="movetaskitem(selecteitem.task_id,z.task_group_id)">{{z.task_group_name}} <span style="float:right;">></span></li>
+		</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>			
+		
+        </div>
+		
+		

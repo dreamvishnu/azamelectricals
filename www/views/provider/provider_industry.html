@@ -1,0 +1,33 @@
+<div ng-controller="ProviderCtrl" class="innerpages"  data-ng-init="get_proovider_skills()">
+	<div class="col-md-12">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Industry</h3>
+		  </div>
+		   <p class="breakspace"></p>
+			<p>Select Industry</p>
+			  <p class="breakspace"></p>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box" ng-repeat="x in skills" ng-click="submit_companyindustry(x.Id)" ng-class="{'selected_skill':x.status == true}">
+              <span class="info-box-icon bg-info" style="background-image:url('https://dev.giginjobs.com/dev/newapp/assets/skills/{{x.ImgBack}}')"></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">{{x.ShortName}}</span>
+                <span class="info-box-number">{{x.FullName}}</span>
+                
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+		</div>
+          
+		  
+          <div class="card-footer">
+			<div class="float-right">
+			  
+			  <a href="#!/provider_company_logo" class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Next</a>
+			</div>
+			<a href="#!/provider_company_info" class="btn btn-default"><i class="fas fa-back"></i> Back</a>
+		  </div>
+        </div>
+        </div>
+ </div>

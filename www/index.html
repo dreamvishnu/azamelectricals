@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AZAM ELECTRICAL</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="dist/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" type="text/css"  href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet"type="text/css"  href="dist/css/adminlte.min.css">
+  <link rel="stylesheet"type="text/css"  href="dist/css/custom.css">
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script src="dist/js/adminlte.js"></script>
+  <script src="library/angular.min.js"></script>
+  <script src="library/angular-route.min.js"></script>
+  <script src="library/angular-sanitize/angular-sanitize.js"></script>
+  <script src="library/angular-swipe/dist/angular-swipe.js"></script>
+  <script src="library/angular-touch.js"></script>
+  <!-- APPLIcation -->
+  <script src="library/rzslider.js"></script>
+  <!-- Our Website Javascripts -->
+  <script src="library/ng-youtube-embed.min.js"></script>
+  <script src="library/ui-bootstrap-tpls.min.js"></script>
+  <script src="library/3d/carousel-3d.js"></script>
+  <script src="library/uicursole/ui-carousel.min.js"></script>
+  <script src="library/slick.min.js"></script>
+  <script src="library/angular-slick.min.js"></script>
+  <script src="library/angularjs-social-login.js"></script>
+  <script src="library/angularjs-autogrow.min.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/ProfileCtrl.js"></script>
+  <script src="app/SeekerCtrl.js"></script>
+  <script src="app/ProviderCtrl.js"></script>
+  <!-- APPLIcation -->
+</head>
+<body class="hold-transition sidebar-mini layout-fixed"  ng-app="GigApp">
+<!-- Navbar -- SEEKER -->
+<nav class="main-header navbar navbar-expand navbar-dark navbar-light"  ng-show="profileactive == 'seeker'">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="javascript:void(0)" role="button"><i class="nav-icon fas fa-bars"></i></a>
+    </li>
+  </ul>
+  <!-- SEARCH FORM -->
+
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">
+    <!--<li class="nav-item ">
+      <a class="nav-link"  href="#!/seekers_messages">
+        <i class="far fa-comments"></i>
+        <span class="badge badge-danger navbar-badge" ng-show="seeker_message_count > 0">{{seeker_message_count}}</span>
+      </a>
+    </li>-->
+    <li class="nav-item ">
+      <a class="nav-link" data-toggle="" href="#!/seekers_notification">
+        <i class="far fa-bell"></i>
+        <span class="badge badge-danger navbar-badge" ng-show="seeker_notification_count > 0">{{seeker_notification_count}}</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- /.navbar -->
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4" ng-show="profileactive == 'seeker'">
+  <!-- Brand Logo -->
+  <a href="javascript:void(0)" class="brand-link text-center">
+    <img src="dist/img/logo.png"
+         style="    opacity: 1;    height: 57px;    margin: 0px auto">
+  </a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img ng-src="{{baseurl}}media/{{userprofile.photo}}" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="javascript:void(0)" class="d-block">{{userprofile.staff_name}}</a>
+      </div>
+    </div>
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+           with font-awesome or any other icon font library -->
+        <li class="nav-item" >
+          <a href="#!/seeker_landing" ng-click="hidemenu()" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+              My Projects
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+		 <li class="nav-item" >
+          <a href="#!/request_items" ng-click="hidemenu()" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+              My Requested Item
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a href="#!/seekers_my_gigs"  ng-click="hidemenu()" class="nav-link">
+            <i class="nav-icon fas fa-briefcase"></i>
+            <p>
+              My Tasks
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#!/seekers_my_application"  ng-click="hidemenu()" class="nav-link">
+            <i class="nav-icon fas fa-business-time"></i>
+            <p>
+              Today Task
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#!/seekers_saved_gigs"  ng-click="hidemenu()" class="nav-link">
+            <i class="nav-icon fas fa-file-download"></i>
+            <p>
+              Complted Task
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#!/seekers_notification"  ng-click="hidemenu()" class="nav-link">
+            <i class="nav-icon fas fa-bell"></i>
+            <p>
+              Notification
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        
+        <!--<li class="nav-item">
+           <a href="#!/seekers_chat"  ng-click="hidemenu()" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                 Chat
+                 <i class="right fas fa-angle-right"></i>
+              </p>
+           </a>
+        </li>-->
+        <li class="nav-item">
+          <a href="javascript:void(0)"  ng-click="logout(); hidemenu();" class="nav-link">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>
+              Logout
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+<div class="wrapper">
+  <div class="content-wrapper" ng-view></div>
+  <!-- Control Sidebar -->
+</div>
+<!-- ./wrapper -->
+<footer class="footer" ng-show="profileactive == 'seeker'">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <a class="btn btn-primary" href="#!/seeker_landing">
+          <i class="nav-icon fas fa-user"></i> <br />
+          My Projects
+        </a>
+      </div>
+      <div class="col-xs-4">
+        <a class="btn btn-primary"  href="#!/seekers_my_application">
+          <i class="nav-icon fas fa-briefcase"></i>  <br />
+          My Tasks
+        </a>
+      </div>
+      
+      <div class="col-xs-4">
+        <a class="btn btn-primary"  href="#!/seekers_search_by_category">
+          <i class="nav-icon fas fa-search"></i> <br />
+          My Attandance
+        </a>
+      </div>
+      <!--<div class="col-xs-25">
+         <button class="btn btn-primary">One</button>
+         </div>-->
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        //alert("Device is ready to Use");
+		//onready();
+		navigator.geolocation.getCurrentPosition(onSuccess, onError,{ enableHighAccuracy: true });
+		//var x = localStorage.getItem("mytime");
+		
+		///alert('VIshnu');
+		//alert(x);
+    }
+	function onSuccess(position) {
+    	if(localStorage.getItem("mytime")){
+			var x = JSON.parse(localStorage.getItem("mytime"));
+			}else{
+				var x = [];
+			}
+			x.push({'lat':position.coords.latitude,'log':position.coords.longitude,'time':position.timestamp});
+			localStorage.setItem("mytime", JSON.stringify(x));
+		
+    };
+	function onError(error) {
+        alert('code: '    + error.code    + '\n' +   'message: ' + error.message + '\n');
+    }
+	setInterval(function(){ 
+		//alert(1);
+		navigator.geolocation.getCurrentPosition(onSuccess, onError,{ enableHighAccuracy: true }); 
+	}, 120000);
+	/*function onready(){
+	BackgroundFetch.configure(function() {
+        navigator.geolocation.getCurrentPosition(function(position){
+			if(localStorage.getItem("mytime")){
+				var x = JSON.parse(localStorage.getItem("mytime"));
+			}else{
+				var x = [];
+			}
+			//x.push({'lat':position.coords.latitude,'log':position.coords.longitude,'time':position.timestamp});
+			localStorage.setItem("mytime", JSON.stringify(x));
+			window.BackgroundFetch.finish();
+        }, function(error){
+            alert('Error code: ' + error.code);
+            alert('Error message: ' + error.message);
+            window.BackgroundFetch.finish();
+
+        }, {
+            enableHighAccuracy: false,
+            timeout:            20000,
+            maximumAge:         0
+        });
+
+    }, function(error) {
+
+        alert('- BackgroundFetch failed', error);
+
+    }, {
+        minimumFetchInterval: 1
+    });
+	}*/
+	document.addEventListener('deviceready', function () {
+		//cordova.plugins.backgroundMode.enable();
+	}, false);
+</script>
+
+<script>
+document.addEventListener('deviceready', function () {
+var eventCallback = function() {
+     navigator.geolocation.getCurrentPosition(onSuccess, onError,{ enableHighAccuracy: true }); 
+}
+
+var successCallback = function() {
+    alert('Device Ready To Use');
+	navigator.geolocation.getCurrentPosition(onSuccess, onError,{ enableHighAccuracy: true }); 
+}
+
+var errorCallback = function(e) {
+     alert('an error occurred')
+}
+
+var settings = {
+    timerInterval: 900000, // interval between ticks of the timer in milliseconds (Default: 60000)
+    startOnBoot: true, // enable this to start timer after the device was restarted (Default: false)
+    stopOnTerminate: false, // set to true to force stop timer in case the app is terminated (User closed the app and etc.) (Default: true)
+
+    hours: 12, // delay timer to start at certain time (Default: -1)
+    minutes: 0, // delay timer to start at certain time (Default: -1)
+}
+
+window.BackgroundTimer.onTimerEvent(eventCallback); // subscribe on timer event
+// timer will start at 12:00
+window.BackgroundTimer.start(successCallback, errorCallback, settings);
+}, false);
+</script>
+
+<script>
+
+	BackgroundFetch.configure(function() {
+		navigator.geolocation.getCurrentPosition(function(position){
+			if(localStorage.getItem("mytime")){
+				var x = JSON.parse(localStorage.getItem("mytime"));
+			}else{
+				var x = [];
+			}
+			x.push({'lat':position.coords.latitude,'log':position.coords.longitude,'time':position.timestamp});
+			localStorage.setItem("mytime", JSON.stringify(x));
+			window.BackgroundFetch.finish();
+		}, function(error){
+			alert('Error code: ' + error.code);
+			alert('Error message: ' + error.message);
+			window.BackgroundFetch.finish();
+
+		}, {
+			enableHighAccuracy: false,
+			timeout:            20000,
+			maximumAge:         0
+		});
+
+	}, function(error) {
+
+		alert('- BackgroundFetch failed', error);
+
+	}, {
+		minimumFetchInterval: 15,
+		stopOnTerminate: false,
+		startOnBoot: true
+	});
+	
+</script>
+</body>
+</html>
+
+
+

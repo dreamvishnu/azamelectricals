@@ -1,0 +1,71 @@
+<section class="content innerpage" ng-controller="SeekerCtrl"  data-ng-init="get_punch_data();  ">
+
+      <!-- Default box -->
+      <div class="card card-solid paddingzero">
+	  
+        <div class="card-body pb-0 paddingzero">
+		<div class="card-header">
+			<h3 class="card-title">My Attandance</h3>
+		  </div>
+          <div class="card-body" ng-show="punchin == 0">
+		   <div class="col-12 col-sm-6 col-md-4  align-items-stretch">
+            <p style="font-size:16px; text-align:center;">you have not marked your attendance yet please click on punchin</p>
+            </div>
+			
+			<div class="text-center" id="gpsstatus3" style="display:none;">
+			<button  class="btn btn-primary" style="margin:10px;"  class="form-control" ng-click="punch_attandance(1)">PunchIn</button>
+			</div>
+			<div class="text-center" id="gpsstatus4">
+				Wating for GPS
+			</div>
+          </div>
+		  <div class="card-body" ng-show="punchin == 1">
+		   <div class="col-12 col-sm-6 col-md-4  align-items-stretch">
+            <p style="font-size:16px; text-align:center;">you have already PunchedIn, Click on below button to Punch OUt</p>
+            </div>
+			
+			<div class="text-center" id="gpsstatus1" style="display:none;">
+			<button  class="btn btn-danger" style="margin:10px;"  class="form-control" ng-click="punch_attandance(0)">PunchOut</button>
+			</div>
+			<div class="text-center" id="gpsstatus2">
+				Wating for GPS
+			</div>
+          </div>
+        </div>
+      
+        <!-- /.card-footer -->
+      </div>
+	  <script>
+		function onSuccess_lat(position) {
+			localStorage.setItem("lat", position.coords.latitude);
+			localStorage.setItem("log", position.coords.longitude);
+			
+		}
+		
+		function onError_lat(error) {
+			alert('code: '    + error.code    + '\n' +   'message: ' + error.message + '\n');
+		}
+		setInterval(function(){ 
+			cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
+				if(enabled == true){
+					$('#gpsstatus1').show();
+					$('#gpsstatus2').hide();
+					$('#gpsstatus3').show();
+					$('#gpsstatus4').hide();
+				}else{
+							alert('Enable GPS TO PUNCH');
+					$('#gpsstatus2').show();
+					$('#gpsstatus1').hide();
+					$('#gpsstatus4').show();
+					$('#gpsstatus3').hide();
+				}
+				navigator.geolocation.getCurrentPosition(onSuccess_lat, onError_lat,{ enableHighAccuracy: true }); 
+			}, function(error){
+				alert('Enable GPS TO PUNCH');
+			});  
+			
+			//navigator.geolocation.getCurrentPosition(onSuccess_lat, onError_lat,{ enableHighAccuracy: true }); 
+		}, 5000);
+	  </script>
+
+    </section>

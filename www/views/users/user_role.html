@@ -1,0 +1,33 @@
+<section ng-controller="ProfileCtrl"  class="loginpage ">
+	<div class="text-center logocontainer">
+		<img ng-src="dist/img/gigin-dark.svg">
+	</div>
+	<div class="container">
+		<div class="row heading heading-icon">
+			<h2>Select Your Profile</h2>
+		</div>
+		
+		<ul class="genderselection">
+			  <li ng-click="select_role(0)" ng-class="{'selected':role==0 }">
+				  <div class="cnt-block equal-hight" style="height: 349px;">
+					<figure><img src="dist/icon/freelancer.png" class="img-responsive" alt=""></figure>
+					<h3><a href="javascript:void(0)">Gig Seekers</a></h3>
+					
+					
+				  </div>
+			  </li>
+			  <li  ng-click="select_role(1)" ng-class="{'selected':role==1 }">
+				  <div class="cnt-block equal-hight" style="height: 349px;">
+					<figure><img src="dist/icon/boss.png" class="img-responsive" alt=""></figure>
+					<h3><a href="javascript:void(0)">Gig Provider </a></h3>
+					
+				   
+				  </div>
+			  </li>
+			  
+			</ul>
+			<p ng-show="role === 0 || role === 1" class="nextbutton text-center">
+				<a href="javascript:void(0)" ng-click="checklogin();" class="btn btn-primary">NEXT</a>
+			</p>
+	</div>
+</section>

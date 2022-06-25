@@ -1,0 +1,148 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_project_item(); get_all_product_unit()">
+	<div  class="">
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Project Item</h3>
+		  </div>
+	      <div class="" id="skill_list">
+			<div ng-repeat="x in joblist.data">
+			<div class="info-box bg-yellow" >
+            
+
+            <div class="info-box-content">
+              <span class="info-box-text" style="white-space: break-spaces;">{{x.title}}</span>
+			  <div class="progress">
+                <div class="progress-bar" style="width: {{x.item_supplied}}%"></div>
+              </div>
+              <span class="info-box-number">Item required: {{x.amount}}{{x.unit_name}}</span>
+              <span class="info-box-number">Phase: {{x.payment_status}}</span>
+
+              
+              
+            </div>
+            <ul class="ItemList">
+				<li ng-repeat="y in x.products">
+					{{y.product_name}} <span style="color:black; font-size:10px;">{{y.tq}} {{y.unit_symbol}}</span>
+					<span ng-show="y.recived_item > 0"><br /><span>Recived {{y.recived_item}} {{y.unit_symbol}}</span></span>
+				</li>
+			</ul>
+			<a href="javascript:void(0)" ng-click="link_item(x)" data-toggle="modal" data-target="#myModal" class="btn btn-sm bg-red btn-verysmall">
+				<i class="fas fa-list"></i> Link Item
+			</a>
+          </div>
+			
+          </div>
+			<a href="#!/seeker_expertise_level"  id="myBtn" class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Request Item</a>
+
+		</div>
+	
+		
+          
+		 
+        </div>
+		<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="clickmetoclose" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Link Item</h4>
+      </div>
+      <div class="modal-body">
+			<form>
+				<select ng-model="linkproduct.product_id"   ng-change="get_selected_item()" class="form-control" multiple >
+					<option ng-repeat="x in ProductUnit.product" value="{{x.product_id}}">{{x.product_name}}</option>
+				</select>
+				
+				<div >
+					<table class="table table-bordered">
+						<tr>
+							<th>Product Name</th>
+							<th>Quantity</th>
+							<th>Unit</th>
+						</tr>
+						<tr ng-repeat="y in listitem_added">
+							<td>{{y.product_name}}</td>
+							<td><input type="number" ng-model="y.q" style="width: 81px;"></td>
+							<td>
+								{{y.unit_name}}
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+			</form>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-default" ng-click="saveproduct_added()" >Add Products</button>
+      </div>
+    </div>
+
+  </div>
+</div>	
+        </div>
+
+		
+
+        </div>
+<style>
+ul.ItemList {
+    width: 100%;
+    float: left;
+    display: block;
+    list-style: none;
+    padding: 0px;
+	color: #fff;
+    font-weight: bold;
+}
+.info-box.bg-yellow {
+    display: block;
+    overflow: hidden;
+}
+ul.ItemList span {
+    color: red;
+    font-weight: normal;
+}
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+</style>
+<script>
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>

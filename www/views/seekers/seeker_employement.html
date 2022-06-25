@@ -1,0 +1,214 @@
+<div ng-controller="SeekerCtrl" class="innerpages" data-ng-init="get_employment()">
+	<div>
+		<div class="card card-primary card-outline">
+		  <div class="card-header">
+			<h3 class="card-title">Employment</h3>
+		  </div>
+		   <p class="breakspace"></p>
+			Add your past work experience
+			  <p class="breakspace"></p>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box" ng-repeat="x in employmentlist">
+              <span class="info-box-icon bg-info"><i class="fas fa-briefcase"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">{{x.Company}}</span>
+                <span class="info-box-number"><strong>Job Title</strong>: {{x.Title}}</span>
+                <span class="info-box-number"><strong>Location</strong>: {{x.Loc}}</span>
+                <p ng-show="x.isPresent == 1"><strong>Duration</strong>: {{x.StartDate}} - (Present)</p>
+												<p ng-show="x.isPresent == 0"><strong>Duration</strong>: {{x.StartDate}} - {{x.EndDate}}</p>
+												<p>{{x.Descr}}</p>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+			
+            <!-- /.info-box -->
+          </div>
+          <p class="text-center add_button">
+			<a href="javascript:void(0)" data-toggle="modal" data-target="#educationbox"><i class="fas fa-plus"></i></a>
+		  </p>
+		  
+          <div class="card-footer">
+			<div class="float-right">
+			  
+			 <a href="#!/seeker_languages"  class="btn btn-primary"><i class="fab fa-telegram-plane"></i> Next</a>
+			</div>
+			<a href="#!/seeker_education" class="btn btn-default"><i class="fas fa-back"></i> Back</a>
+		  </div>
+        </div>
+        </div>
+		
+		
+		<div id="educationbox" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="closeeducationpoup">&times;</button>
+        <h4 class="modal-title">Add Employment</h4>
+      </div>
+      
+  
+      <div class="modal-body " style="    text-align: left;">
+       
+   <div>
+    <form action="javascript:return false" ng-submit="submit_employement()">
+      <div data-v-5fac4428="" class="form-group">
+         <label data-v-5fac4428="" class="">Company</label>  
+         <div data-v-50200d5d="" class="up-autocomplete-wrapper" data-v-5fac4428="">
+            <input data-v-50200d5d="" placeholder="" type="text" autocomplete="none" ng-model="employemnt.Company" class="form-control" required>
+			
+         </div>
+         <!---->
+      </div>
+      <div class="row m-lg-bottom">
+         <div class="col-md-12">
+            <div  class="form-group">
+               <label  class="">Location</label>  <input  ng-model="employemnt.Loc" type="text" placeholder="City" class="form-control required" required> <!---->
+            </div>
+         </div>
+        
+      </div>
+      <div  class="form-group">
+         <label  class="">Title</label>  
+         <div  class="up-autocomplete-wrapper" >
+            <input  placeholder="" type="text" autocomplete="none"  ng-model="employemnt.Title" class="form-control required" required> <!----> <!---->
+         </div>
+         <!---->
+      </div>
+      <div data-v-5fac4428="" class="form-group m-0">
+         <label data-v-5fac4428="" class="">Period</label>  
+         <div data-v-5fac4428="" class="row">
+            <div data-v-5fac4428="" class="col-md-6">
+               <div data-v-5fac4428="" class="form-group">
+                  <!---->  
+                  <div data-v-04aaaf79="" class="up-dropdown full-width full-width" data-test="employment-start-month" data-v-5fac4428="">
+                     <div aria-haspopup="listbox" aria-expanded="false" type="button" class="up-btn up-btn-default up-dropdown-toggle">
+                        <div class="up-dropdown-toggle-title">
+                           <span class="flex-1 ellipsis">
+                           Month
+                           </span> 
+                           <div class="up-dropdown-icon hydrated up-icon">
+                              <select class="form-control required"  ng-model="employemnt.StartDateM" required>
+									<option ng-repeat="x in months" value="{{x}}" >{{x}}</option>
+									
+								 </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!---->
+                  </div>
+                  <!---->
+               </div>
+            </div>
+            <div data-v-5fac4428="" class="col-md-6">
+               <div data-v-5fac4428="" class="form-group">
+                  <!---->  
+                  <div data-v-04aaaf79="" class="up-dropdown full-width full-width" data-test="employment-start-year" data-v-5fac4428="">
+                     <div aria-haspopup="listbox" aria-expanded="false" type="button" class="up-btn up-btn-default up-dropdown-toggle">
+                        <div class="up-dropdown-toggle-title">
+                           <span class="flex-1 ellipsis">
+                           Year
+                           </span> 
+                           <div class="up-dropdown-icon hydrated up-icon">
+                             <select class="form-control required"  ng-model="employemnt.StartDateY" required>
+									<option ng-repeat="x in years" value="{{x}}" >{{x}}</option>
+									
+								 </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!---->
+                  </div>
+                  <!---->
+               </div>
+            </div>
+         </div>
+         <div data-v-5fac4428="" class="m-sm-top-bottom">
+            <p data-v-5fac4428="" class="m-0-bottom text-muted">
+               through
+            </p>
+         </div>
+         <div data-v-5fac4428="" class="row p-md-bottom" ng-hide="employemnt.isPresent == true">
+            <div data-v-5fac4428="" class="col-md-6">
+               <div data-v-5fac4428="" class="form-group">
+                  <!---->  
+                  <div data-v-04aaaf79="" class="up-dropdown full-width full-width" data-test="employment-end-month" data-v-5fac4428="">
+                     <div aria-haspopup="listbox" aria-expanded="false" type="button" class="up-btn up-btn-default up-dropdown-toggle">
+                        <div class="up-dropdown-toggle-title">
+                           <span class="flex-1 ellipsis">
+                           Month
+                           </span> 
+                           <div class="up-dropdown-icon hydrated up-icon">
+                              <select class="form-control required"  ng-model="employemnt.EndDateM">
+									<option ng-repeat="x in months" value="{{x}}" >{{x}}</option>
+									
+								 </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!---->
+                  </div>
+                  <!---->
+               </div>
+            </div>
+            <div data-v-5fac4428="" class="col-md-6" >
+               <div data-v-5fac4428="" class="form-group">
+                  <!---->  
+                  <div data-v-04aaaf79="" class="up-dropdown full-width full-width" data-test="employment-end-year" data-v-5fac4428="">
+                     <div aria-haspopup="listbox" aria-expanded="false" type="button" class="up-btn up-btn-default up-dropdown-toggle">
+                        <div class="up-dropdown-toggle-title">
+                           <span class="flex-1 ellipsis">
+                           Year
+                           </span> 
+                           <div class="up-dropdown-icon hydrated up-icon">
+								<select class="form-control required"  ng-model="employemnt.EndDateY">
+									<option ng-repeat="x in years" value="{{x}}" >{{x}}</option>
+									
+								 </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!---->
+                  </div>
+                  <!---->
+               </div>
+            </div>
+         </div>
+         <!---->
+      </div>
+      <div data-v-5fac4428="" class="form-group">
+         <!---->   <!---->
+      </div>
+      <div class="checkbox">
+         <label class="">
+            <input type="checkbox" name="checkbox" ng-model="employemnt.isPresent"> 
+        
+            <span>
+            I currently work here
+            </span>
+         </label>
+      </div>
+      <div data-v-5fac4428="" class="form-group p-md-top">
+         <label data-v-5fac4428="" class="">Description (Optional)</label>   
+         <textarea data-v-5fac4428="" rows="7" class="form-control" ng-model="employemnt.Descr" ></textarea>
+       
+      </div>
+
+			<button class="btn btn-primary " ng-show="submitted == false" type="submit">Update</button>
+            <button class="btn btn-secondary disabled" ng-show="submitted == true" type="button">Update</button>
+      
+</form>
+   
+      
+   
+    </div>
+
+  </div>
+</div>
+		
+		
+		
+		
+        </div>
