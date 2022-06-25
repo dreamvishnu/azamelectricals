@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "6131842458",
+    "project_id": "azam-elecrticals",
+    "storage_bucket": "azam-elecrticals.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6131842458:android:7bc86dfd9f8ab4ae0c0e23",
+        "android_client_info": {
+          "package_name": "com.azam.electricals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6131842458-1g9bbbh0s4hgcqg3i0ogockl31rolb6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5u0HZ055mcNLt_ouom062QiK-3QQkjZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6131842458-1g9bbbh0s4hgcqg3i0ogockl31rolb6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
