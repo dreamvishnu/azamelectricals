@@ -8,7 +8,7 @@ app.controller('ProviderCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.dataset = {};
 		
 		$scope.dataset.ProviderId = $rootScope.userprofile.Id;
-		$scope.dataset.CategoryId = $rootScope.search.skillID;
+
 		$scope.dataset.Key = $rootScope.search.text;
 		$scope.gigseekers = [];
 		$rootScope.loader = true;
@@ -38,6 +38,7 @@ app.controller('ProviderCtrl', function($rootScope, $scope, $http, $location) {
 			$rootScope.loader = false;
 			
 		}, function errorCallback(response) {
+	
 			$scope.showerror = true;
 			$rootScope.loader = false;
 			$scope.$apply();
@@ -46,6 +47,7 @@ app.controller('ProviderCtrl', function($rootScope, $scope, $http, $location) {
 	}
 	if($rootScope.profile_status != 1){
 		$scope.get_profile_status();
+		
 	}
 	$scope.get_all_skills = function(){
 		$scope.dataset = {};
@@ -92,7 +94,7 @@ app.controller('ProviderCtrl', function($rootScope, $scope, $http, $location) {
 		$scope.dataset.ProviderId = $rootScope.userprofile.Id;
 		
 		$scope.gigseekers = [];
-		$rootScope.loader = true;
+
 		$scope.showerror = false;
 		$http.post($rootScope.baseurl_main + 'providerapi/get_top_gigseekers', $scope.dataset, {headers: {"Content-Type": "application/json"},timeout: 15000}).then(function(responsedata) {
 			
@@ -112,7 +114,7 @@ app.controller('ProviderCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.successful_gig_seekers = function(){
 		$scope.dataset = {};
 		
-		$scope.dataset.ProviderId = $rootScope.userprofile.Id;
+
 		
 		$scope.gigseekers = [];
 		$rootScope.loader = true;
@@ -135,7 +137,7 @@ app.controller('ProviderCtrl', function($rootScope, $scope, $http, $location) {
 	$scope.provider_feed = function(){
 		$scope.dataset = {};
 		
-		$scope.dataset.ProviderId = $rootScope.userprofile.Id;
+		$scope.dataset.ProviderId = $rootScope.userprofilep.Id;
 		
 		$scope.gigseekers = [];
 		$rootScope.loader = true;
